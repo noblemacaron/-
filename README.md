@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>プログラミング修正ゲーム</title>
+    プログラミング修正ゲーム
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
