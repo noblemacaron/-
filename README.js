@@ -25,10 +25,11 @@ function submitCode() {
     feedbackElement.innerText = feedback;
     if (feedback === '正解です！') {
         feedbackElement.className = 'correct';
+        setTimeout(resetGame, 2000); // 2秒待ってから難易度選択画面に戻る
     } else {
         feedbackElement.className = 'incorrect';
+        saveProgress(currentLevel, editor.getValue()); // 不正解時に進捗を保存
     }
-    saveProgress(currentLevel, editor.getValue());
 }
 
 function checkCode(code, level) {
@@ -65,6 +66,13 @@ function loadProgress() {
         document.getElementById('level-selection').style.display = 'none';
         document.getElementById('game-area').style.display = 'block';
     }
+}
+
+function resetGame() {
+    document.getElementById('level-selection').style.display = 'block';
+    document.getElementById('game-area').style.display = 'none';
+    document.getElementById('feedback').innerText = ''; // フィードバックメッセージをクリアする
+    editor.setValue('');
 }
 
 document.addEventListener('DOMContentLoaded', loadProgress);
